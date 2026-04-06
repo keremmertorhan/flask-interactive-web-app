@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Hello from Kerem&apos;s Azure App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body class="bg-dark text-light">
+    <main class="container py-5">
+        <div class="px-4 py-4 my-3 text-center border rounded-3 bg-secondary">
+            <img
+                class="d-block mx-auto mb-4"
+                src="{{ url_for('static', filename='images/azure-icon.svg') }}"
+                alt="Azure Logo"
+                width="140"
+                height="140"
+            />
+            <h1 class="display-5 fw-bold text-warning">
+                Personalized Greeting Page
+            </h1>
+            <p class="lead mb-0">
+                This page shows a special greeting when your name is provided.
+            </p>
+        </div>
+
+        <div class="col-md-8 mx-auto text-center mt-4 p-4 border rounded-3 bg-light text-dark">
+            {% if name %}
+                {% if name|lower == 'kerem' %}
+                    <h2 class="fw-bold display-6" style="font-family: 'Georgia', serif;">
+                        Special greeting just for you, Kerem!
+                    </h2>
+                    <p class="fs-5 mb-0">
+                        Your Azure Flask app is working perfectly and recognizes your name.
+                    </p>
+                {% else %}
+                    <h3 class="fw-semibold">
+                        Hello, {{ name }}!
+                    </h3>
+                    <p class="mb-0">
+                        Thank you for using this Azure Flask sample application.
+                    </p>
+                {% endif %}
+            {% else %}
+                <h3 class="fw-semibold">
+                    Hello!
+                </h3>
+                <p class="mb-0">
+                    It seems no name was provided.
+                </p>
+            {% endif %}
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-warning btn-lg">
+                Go back and enter another name
